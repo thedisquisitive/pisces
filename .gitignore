@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+/pasm/.vs
+/pasm/pasm/x64
+/pasm/x64
