@@ -4,17 +4,19 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 #include "tokenizer.h"
+#include "chumlog.h"
+#include "asm.h"
 
 using namespace std;
 
 int main()
 {
-    PiscesTokenizer tokenizer;
-    vector<string> test = tokenizer.Tokenize("LOD V[4],$7 // Test");
-    for (int i = 0; i < test.size(); i++) {
-        cout << test[i] << endl;
-    }
+    PiscesAssembler * assembler = new PiscesAssembler("test.asm", "test.o");
+    cout << std::setfill('0') << std::setw(4) << std::hex << assembler->getByteCode(assembler->getNextLine()) << endl;
+    cout << std::setfill('0') << std::setw(4) << std::hex << assembler->getByteCode(assembler->getNextLine()) << endl;
+    delete assembler;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -24,6 +24,9 @@
     <ClCompile Include="chumlog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="asm.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tokenizer.h">
@@ -35,5 +38,10 @@
     <ClInclude Include="chumlog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.asm">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

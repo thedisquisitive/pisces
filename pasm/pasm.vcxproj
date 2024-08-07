@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="asm.cpp" />
     <ClCompile Include="chumlog.cpp" />
     <ClCompile Include="pasm.cpp" />
     <ClCompile Include="tokenizer.cpp" />
@@ -135,6 +136,9 @@
     <ClInclude Include="asm.h" />
     <ClInclude Include="chumlog.h" />
     <ClInclude Include="tokenizer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

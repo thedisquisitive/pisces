@@ -6,6 +6,8 @@
 #include <fstream>
 #include <vector>
 
+#include "tokenizer.h"
+
 using namespace std;
 
 // Define a few opcodes and pieces to make
@@ -55,14 +57,50 @@ using namespace std;
 class PiscesAssembler {
 private:
     string srcFile;
+    string outFile;
+
+    ifstream fin;
+    ofstream fout;
 
 public:
-    PiscesAssembler();
-    PiscesAssembler(string file);
-    ~PiscesAssembler();
+    PiscesAssembler() {
+        srcFile = "main.asm"; outFile = "pisce.o";
+        fout.open(outFile, ios::out | ios::binary);
+        if (!fout.is_open()) {
+            cout << "PiscesAssembler: Error - could not open output stream!\n";
+        }
+        fin.open(srcFile);
+        if (!fin.is_open()) {
+            cout << "PiscesAssembler: Error - could not open source file!\n";
+        }
+    }
+    PiscesAssembler(string ifile, string ofile) {
+        srcFile = ifile;
+        outFile = ofile;
+        fout.open(outFile, ios::out | ios::binary);
+        if (!fout.is_open()) {
+            cout << "PiscesAssembler: Error - could not open output stream!\n";
+        }
+        fin.open(srcFile);
+        if (!fin.is_open()) {
+            cout << "PiscesAssembler: Error - could not open source file!\n";
+        }
+    }
+    ~PiscesAssembler() {
+        if (fin.is_open()) {
+            fin.close();
+        }
+        if (fout.is_open()) {
+            fout.close();
+        }
+        return;
+    }
 
-    void setSourceFile();
-    string getSourceFile();
+    void setSourceFile(string f) { srcFile = f; }
+    string getSourceFile() { return srcFile; }
+
+    vector<string> getNextLine();
+    unsigned short getByteCode(vector<string> src);
 
 
 };
